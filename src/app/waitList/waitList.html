@@ -1,1 +1,39 @@
-waitList page.
+<form ng-submit="vm.addParty()" class="form-inline party-form">
+  <div class="form-group">
+    <input ng-model="vm.newParty.name" type="text" class="form-control" placeholder="name" required>
+  </div>
+  <div class="form-group">
+    <input ng-model="vm.newParty.phone" type="text" class="form-control" placeholder="phone" required>
+  </div>
+  <div class="form-group">
+    <input ng-model="vm.newParty.size" type="number" class="form-control" placeholder="Size of party" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Add party</button>
+</form>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Done?</th>
+      <th>Info</th>
+      <th>Notified?</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tr ng-repeat="party in vm.parties">
+    <td>
+<!--      TODO: Checkbox to display party.done-->
+    </td>
+    <td>
+      <div><strong>{{ party.name }} {{ party.size }} people</strong></div>
+      <div>{{ party.phone }}</div>
+    </td>
+    <td>
+      <div>{{ party.notified ? 'Yes' : 'No' }}</div>
+    </td>
+    <td>
+<!--      TODO: Button that sends a text message to this party. -->
+<!--      TODO: Button that removes this party. -->
+    </td>
+  </tr>
+</table>
