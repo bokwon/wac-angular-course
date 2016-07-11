@@ -5,21 +5,14 @@
       .module('app.waitList')
       .controller('WaitListController', WaitListController);
     
-    WaitListController.$inject = ['$firebaseArray']; //dependency injection.
+    WaitListController.$inject = ['$firebaseArray', 'FIREBASE_URL']; //dependency injection.
   
-    function WaitListController($firebaseArray) {
+    function WaitListController($firebaseArray, FIREBASE_URL) {
       var vm = this; //vm : ViewModel (this is object instance of controller constructor function)
       
-      var fireParties = new Firebase('https://wac-waitandeat.firebaseio.com/parties');
-      var fireTextMessages = new Firebase('https://wac-waitandeat.firebaseio.com/textMessages');
+      var fireParties = new Firebase(FIREBASE_URL + 'parties');
+      var fireTextMessages = new Firebase(FIREBASE_URL + 'textMessages');
       
-      function Party() {
-        this.name = '';
-        this.phone = '';
-        this.size = '';
-        this.done = false;
-        this.notified = false;
-      }
       
       vm.newParty = new Party();
       vm.parties = $firebaseArray(fireParties);
