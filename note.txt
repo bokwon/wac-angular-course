@@ -1,0 +1,25 @@
+users
+  user1 - uid
+    parties
+      party1
+      party2
+      .
+      .
+      .
+  user2 - uid
+  .
+  .
+  .
+textMessages
+  textMessage1
+  textMessage2
+  .
+  .
+  .
+  
+1) wsitList.controller.js: inject user in WaitListController.$inject
+2) Add firebaseDataService.user: add users property in service object
+  users: root.child('users')
+3) Add partyService.getPartiesByUser
+4) partyService.getPartiesByUser in WaitListController
+  vm.parties = partyService.getPartiesByUser(user.uid);

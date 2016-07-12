@@ -11,7 +11,15 @@
         $routeProvider.when('/waitlist', {
           templateUrl: 'app/waitList/waitList.html',
           controller: 'WaitListController',
-          controllerAs: 'vm'
+          controllerAs: 'vm', 
+          resolve: {user: resolveUser } // this controller will only load when user is returned from promise
         });
     }
+    
+    resolveUser.$inject = ['authService'];
+  
+    function resolveUser(authService) {
+      return authService.firebaseAuthObject.$requireAuth();
+    }
+    
 })();
