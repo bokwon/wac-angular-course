@@ -8,7 +8,8 @@
   authService.$inject = ['$firebaseAuth', 'firebaseDataService'];
   
   function authService($firebaseAuth, firebaseDataService){
-    var firebaseAuthObject = $firebaseAuth(firebaseDataService.root)
+    var firebaseAuthObject = $firebaseAuth();
+    
     var service = {
       firebaseAuthObject: firebaseAuthObject,
       register: register,

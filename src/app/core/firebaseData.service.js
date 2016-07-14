@@ -5,10 +5,8 @@
     .module('app.core')
     .factory('firebaseDataService', firebaseDataService);
   
-    firebaseDataService.$inject = ['FIREBASE_URL'];
-  
-    function firebaseDataService(FIREBASE_URL){
-      var root = new Firebase(FIREBASE_URL); //firebase instance
+    function firebaseDataService(){
+      var root = firebase.database().ref(); //firebase instance
       
       var service = {
         root: root,
