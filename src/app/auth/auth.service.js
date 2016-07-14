@@ -22,15 +22,15 @@
     
     ///////////////
     function register(user){
-      return firebaseAuthObject.$createUser(user);
+      return firebaseAuthObject.$createUserWithEmailAndPassword(user.email, user.password);
     }
     
     function login(user){
-      return firebaseAuthObject.$authWithPassword(user);
+      return firebaseAuthObject.$signInWithEmailAndPassword(user.email, user.password);
     }
     
     function logout(){
-      firebaseAuthObject.$unauth();
+      firebaseAuthObject.$signOut();
     }
     
     function isLoggedIn(){

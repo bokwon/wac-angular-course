@@ -5,13 +5,13 @@
       .module('app.waitList')
       .controller('WaitListController', WaitListController);
     
-    WaitListController.$inject = ['textMessageService', 'partyService']; //dependency injection.
+    WaitListController.$inject = ['textMessageService', 'partyService', 'user']; //dependency injection.
   
-    function WaitListController(textMessageService, partyService) {
+    function WaitListController(textMessageService, partyService, user) {
       var vm = this; //vm : ViewModel (this is object instance of controller constructor function)
       
       vm.newParty = new partyService.Party();
-      vm.parties = partyService.parties;
+      vm.parties = partyService.getPartiesByUser(user.uid);
       vm.addParty = addParty;
       vm.removeParty = removeParty;
       vm.sendTextMessage = sendTextMessage;
