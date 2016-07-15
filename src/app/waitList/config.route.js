@@ -19,7 +19,7 @@
     resolveUser.$inject = ['authService'];
   
     function resolveUser(authService) {
-      return authService.firebaseAuthObject.$requireAuth();
+      return authService.firebaseAuthObject.$requireSignIn();
     }
     
 })();

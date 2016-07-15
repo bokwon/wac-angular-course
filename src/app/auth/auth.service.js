@@ -15,7 +15,8 @@
       register: register,
       login: login,
       logout: logout,
-      isLoggedIn: isLoggedIn
+      isLoggedIn: isLoggedIn,
+      sendWelcomeEmail: sendWelcomeEmail
     };
     
     return service;
@@ -34,7 +35,15 @@
     }
     
     function isLoggedIn(){
-      firebaseAuthObject.$getAuth();
+      var result = firebaseAuthObject.$getAuth();
+      
+      console.log(result);
+    }
+    
+    function sendWelcomeEmail(emailAddress){
+      firebaseDataService.emails.push({
+        emailAddress: emailAddress
+      });
     }
   }
     

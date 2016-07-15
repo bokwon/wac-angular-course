@@ -17,14 +17,15 @@
       
       vm.register = register;
       vm.login = login;
-      vm.logout = logout;
-      vm.isLoggedIn = authService.isLoggedIn;
-      
+          
       function register(user){
         return authService.register(user) //this returns promise
           .then(function(){
             vm.login(user);
-          }) // success case
+          })
+          .then(function(){
+            return authService.sendWelcomeEmail(user.email);
+          })
           .catch(function(error){
             console.log(error);
           }); // error case
@@ -39,12 +40,6 @@
           .catch(function(error){
             console.log(error);
           });
-      }
-      
-      function logout(){
-        console.log('Logging out');
-        authService.logout()
-        $location.path('/');
       }
     }
   
