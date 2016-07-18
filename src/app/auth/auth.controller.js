@@ -21,7 +21,7 @@
       function register(user){
         return authService.register(user) //this returns promise
           .then(function(){
-            vm.login(user);
+            return vm.login(user);
           })
           .then(function(){
             return authService.sendWelcomeEmail(user.email);
@@ -33,8 +33,7 @@
       
       function login(user){
         return authService.login(user)
-          .then(function(loggedInUser){
-            console.log(loggedInUser);
+          .then(function(){
             $location.path('/waitlist');
           })
           .catch(function(error){
