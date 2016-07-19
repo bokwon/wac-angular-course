@@ -30,7 +30,7 @@
           })
           .catch(function(error){
             vm.error = error;
-          }); // error case
+          });
       }
       
       function login(user){
