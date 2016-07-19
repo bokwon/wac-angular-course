@@ -18,9 +18,9 @@
     }
   }
   
-  PartyTableController.$inject = ['partyService'];
+  PartyTableController.$inject = ['textMessageService'];
   
-  function PartyTableController(partyService) {
+  function PartyTableController(textMessageService) {
     var vm = this;
     
     vm.removeParty = removeParty;
